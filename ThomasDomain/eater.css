@@ -1,0 +1,201 @@
+:root {
+    box-sizing: border-box;
+    cursor: default; }
+  
+  ::selection {
+    color: #11111b;
+    background-color: #ff3333; }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #11111b;
+    color: red;
+    font-size: calc(6.4px + 0.8125vw); 
+    font-family: 'Orbitron';
+    }
+  
+  .error-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+    .error-body:before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: red;
+      mix-blend-mode: overlay;
+      z-index: 1; }
+    .error-body:after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #11111b 21px, transparent 1%) center, linear-gradient(#11111b 21px, transparent 1%) center, white;
+      background-size: 22px 22px;
+      background-position: center;
+      opacity: .2;
+      z-index: 1; }
+    .error-body .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      filter: grayscale(1);
+      mix-blend-mode: luminosity; }
+    .error-body .message {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 3; }
+      .error-body .message h1 {
+        position: absolute;
+        top: 10%;
+        left: 0%;
+        width: 100%;
+        font-size: 10em;
+        margin: 0;
+        animation: shake 600ms ease-in-out infinite alternate;
+        text-shadow: 0 0 0.07em red, -0.2em 0 2em rgba(255, 0, 0, 0.3), 0.2em 0 2em rgba(255, 0, 0, 0.3);
+        user-select: none; }
+        .error-body .message h1:before {
+          content: attr(t);
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0.34em);
+          height: .1em;
+          line-height: .5em;
+          width: 100%;
+          animation: scan 500ms ease-in-out infinite alternate 598ms, glitch-anim 300ms ease-in-out infinite alternate;
+          overflow: hidden;
+          opacity: .7; }
+        .error-body .message h1:after {
+          content: attr(t);
+          position: absolute;
+          top: -29px;
+          left: 50%;
+          transform: translate(-50%, 0.34em);
+          height: .5em;
+          line-height: .1em;
+          width: 100%;
+          animation: scan 665ms ease-in-out infinite alternate 355ms, glitch-anim 300ms ease-in-out infinite alternate;
+          overflow: hidden;
+          opacity: .8; }
+      .error-body .message .bottom {
+        position: absolute;
+        top: 65%;
+        left: 0;
+        width: 100%; }
+      .error-body .message p, .error-body .message a {
+        font-size: 2em;
+        font-family: monospace;
+        text-shadow: 0 0 5px red;
+        filter: blur(0.8px); }
+      .error-body .message a {
+        position: relative;
+        color: red;
+        text-decoration: none;
+        font-weight: 700;
+        border: 2px solid red;
+        text-transform: uppercase;
+        padding: 5px 30px;
+        box-shadow: inset 0 0 0 0 rgba(255, 0, 0, 0.2);
+        transition: 25ms ease-in-out all 0ms;
+        overflow: hidden;
+        animation: attn 3s ease-in-out infinite; }
+        .error-body .message a:hover {
+          cursor: crosshair;
+          box-shadow: inset 0 -2em 0 0 rgba(255, 0, 0, 0.2);
+          transition: 225ms ease-in-out all 225ms;
+          animation: none; }
+          .error-body .message a:hover:before, .error-body .message a:hover:after {
+            transform: translate(-50%, 0) scale(0, 1); }
+        .error-body .message a:active {
+          box-shadow: inset 0 -2em 0 0 rgba(255, 0, 0, 0.5);
+          transition: 225ms ease-in-out all 225ms; }
+        .error-body .message a:before, .error-body .message a:after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0) scale(1, 1);
+          transform-origin: center;
+          background-color: #11111b;
+          width: 90%;
+          height: 5px;
+          transition: 225ms ease-in-out all;
+          mix-blend-mode: hard-light; }
+        .error-body .message a:before {
+          top: -4px; }
+        .error-body .message a:after {
+          bottom: -4px; }
+  
+  @keyframes scan {
+    from, 20%, 100% {
+      height: 0;
+      transform: translate(-50%, 0.44em); }
+    10%, 15% {
+      height: 1em;
+      line-height: .2em;
+      transform: translate(-55%, 0.13em); } }
+  
+  @keyframes pulse {
+    from {
+      text-shadow: 0 0 0 red, 0 0 0 rgba(255, 0, 0, 0.3), 0 0 0 rgba(255, 0, 0, 0.3); }
+    to {
+      text-shadow: 0 0 0.07em red, -0.2em 0 2em rgba(255, 0, 0, 0.3), 0.2em 0 2em rgba(255, 0, 0, 0.3); } }
+  
+  @keyframes attn {
+    0%, 100% {
+      opacity: 1; }
+    30%, 35% {
+      opacity: .4; } }
+  
+  @keyframes shake {
+    0%, 100% {
+      transform: translate(-1px, 0); }
+    10% {
+      transform: translate(2px, 1px); }
+    30% {
+      transform: translate(-3px, 2px); }
+    35% {
+      transform: translate(2px, -3px);
+      filter: blur(4px); }
+    45% {
+      transform: translate(2px, 2px) skewY(-8deg) scale(0.96, 1);
+      filter: blur(0); }
+    50% {
+      transform: translate(-3px, 1px); } }
+  
+  @keyframes glitch-anim {
+    0% {
+      clip: rect(91px, 9999px, 32px, 0); }
+    10% {
+      clip: rect(58px, 9999px, 78px, 0); }
+    20% {
+      clip: rect(96px, 9999px, 45px, 0); }
+    30% {
+      clip: rect(100px, 9999px, 92px, 0); }
+    40% {
+      clip: rect(11px, 9999px, 31px, 0); }
+    50% {
+      clip: rect(76px, 9999px, 49px, 0); }
+    60% {
+      clip: rect(66px, 9999px, 70px, 0); }
+    70% {
+      clip: rect(80px, 9999px, 57px, 0); }
+    80% {
+      clip: rect(31px, 9999px, 68px, 0); }
+    90% {
+      clip: rect(4px, 9999px, 10px, 0); }
+    100% {
+      clip: rect(2px, 9999px, 26px, 0); } }
+  
